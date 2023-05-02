@@ -13,7 +13,7 @@ export default function Home() {
       });
       let json = await res.json();
       return {
-        items: [...json],
+        items: json,
       };
     },
     async sort({ items, sortDescriptor }) {
