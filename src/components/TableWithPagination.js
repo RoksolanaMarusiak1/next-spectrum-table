@@ -11,6 +11,7 @@ import {
   Flex,
   View,
   Slider,
+  ProgressBar,
   Text,
 } from "@adobe/react-spectrum";
 
@@ -54,7 +55,15 @@ export default function TableWithPagination({ itemsList }) {
         >
           {(item) => (
             <Row key={item.id}>
-              {(columnKey) => <Cell>{item[columnKey]}</Cell>}
+              {(columnKey) => {
+                return columnKey === "progress" ? (
+                  <Cell>
+                    <ProgressBar label={` `} size="S" value={item[columnKey]} />
+                  </Cell>
+                ) : (
+                  <Cell>{item[columnKey]}</Cell>
+                );
+              }}
             </Row>
           )}
         </TableBody>
